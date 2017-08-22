@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpProjectServersManager">
+    <servers>
+      <server host="localhost" id="8b01f68b-2db9-4a0d-804a-c3d69f228898" name="testServer" port="8000" use_path_mappings="true" />
+    </servers>
+  </component>
+</project>
