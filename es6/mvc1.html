@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mvc</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+</head>
+<body>
+<div class="btn_group">
+    <button class="choose" value="1">选择1</button>
+    <button class="choose" value="2">选择2</button>
+    <button class="choose" value="3">选择3</button>
+</div>
+<div class="show">
+    你已经选择了：<span class="choosed_text"></span>
+</div>
+<script>
+    var picker = {
+        start: function(){
+            this.view.start();
+        },
+        setModel:function(datas){
+            this.model.setData(datas);
+        }
+    };
+    picker.model = {
+        curData: '',
+        setData:function(datas){
+            this.curData = datas;
+            this.onchange();
+        },
+        onchange: function(){
+            picker.view.update();
+        },
+        //
+        getPiliAction:function(){
+            return this.curData ? this.curData : '???';
+        }
+    };
+    picker.view = {
+        //用户触发change事件
+        start: function(){
+            $('button[value]').on('click',this.onchange);
+        },
+        //change事件
+        onchange: function(){
+            picker.setModel(this.getAttribute('value'));
+        },
+        update: function(){
+            $('.choosed_text').text(picker.model.getPiliAction());
+        }
+    };
+    picker.start();
+</script>
+</body>
+</html>
